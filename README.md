@@ -1,6 +1,6 @@
 # logs
  
-
+A basic program that asnwers threee questions based ona provided data
 
 
 #This project requires certain dependencies such as:
