@@ -1,18 +1,18 @@
-# logs
+## logs
  
-A basic program that asnwers threee questions based ona provided data
+A basic program that asnwers threee questions based on a provided data
 
 
-#This project requires certain dependencies such as:
+## This project requires certain dependencies such as:
 PostgreSQL
 Psycopg2 API
 
 
-#To run it got to the log directory and run it:
+## To run it got to the log directory and run it:
 EG:
 
 CD/logs_analysis/
-python reposrting.py
+python reporting.py
 
 
 
