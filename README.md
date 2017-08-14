@@ -35,23 +35,36 @@ PostgreSQL
 
 Psycopg2 API
 
-Python 
+Python 2.7.12
 
 Vagrant ("bento/ubuntu-16.04-i386")
 
-NewsData(https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.z)
+NewsData
 
 
 
 ## To run it:
 
-Download the data
+Download this data: https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.z
 
-Make sure your enviroment is prepared (Postgresql and psycopg) you can also use the vagrant file included in this repo.
+Make sure your enviroment is prepared, if not installed download and install Postgresql and psycopg
 
-Connect to the news data in your terminal and create the views below 
+If you choose vagraant for your virtual enviroment use the vagrant file included in this repo
 
-Run the script and the insights will be printed out
+Connect to the news data:
+
+    psql -d news -f newsdata.sql
+
+
+Once connected in data create the views below:
+
+    CREATE OR REPLACE VIEWS AS....
+        
+
+Run the script and the insights will be printed out:
+
+    python reporting.py
+
 
 
 
