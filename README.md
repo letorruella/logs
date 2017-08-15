@@ -19,7 +19,7 @@ A basic program that analyses a PostgreSQL database of a fictional news website 
 
 
 
-#The data contains three tables:
+# The data contains three tables:
 
 The authors table, this table hold three columns the author's name and a basic bio and their respective id.
 
@@ -45,25 +45,42 @@ NewsData
 
 ## To run it:
 
-Download this data: https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.z
+Download the news data:             https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.z
 
-Make sure your enviroment is prepared, if not installed download and install Postgresql and psycopg
+Make sure your enviroment is prepared with PostgreSQL and Psycopg2 installed
 
-If you choose vagraant for your virtual enviroment use the vagrant file included in this repo
+If you choose vagrant for your virtual enviroment use the vagrant file included in this repo:
+    
+    Install VirtualBox
+    Install Vagrant
+    
+Go to where the directory in this repo is located and run:
+
+    $ cd logs_analysis/
+    $ ls    
+    README.md  reporting.py  reporting.txt  Vagrantfile
+    $ vagrant up
+
+This will set up your virtual envirmont in vagrant  
+
+Now to login into the vagrant machine just run this command:
+
+    $ vagrant ssh    
+
 
 Connect to the news data:
 
-    psql -d news -f newsdata.sql
+    $ psql -d news -f newsdata.sql
 
 
 Once connected in data create the views below:
 
-    CREATE OR REPLACE VIEWS AS....
+    $ CREATE OR REPLACE VIEWS AS....
         
 
 Run the script and the insights will be printed out:
 
-    python reporting.py
+    $ python reporting.py
 
 
 
@@ -74,7 +91,7 @@ Run the script and the insights will be printed out:
 
 
 
-# VIEWS:
+# Views:
 
 
 ## path_ok: counts the all paths where the status is '200 OK'
@@ -86,20 +103,21 @@ Run the script and the insights will be printed out:
 
 ## pop_articles: wich is combined with path ok giving us a total of all articles
 
-            CREATE OR REPLACE VIEW pop_articles AS SELECT views, substring,
+            CREATE OR REPLACE VIEW pop_articles AS SELECT views, ....substring,
             slug, title,id, author FROM path_ok, articles WHERE slug =
             path_ok.substring ORDER BY views DESC;
 
 
 ## pop_authors: wich is combined with path ok giving us a total of all articles
 
-          CREATE OR REPLACE VIEW pop_authors AS SELECT pop_articles.views, pop_articles.author, authors.name, authors.id FROM pop_articles, authors WHERE pop_articles.author = authors.id ORDER by views DESC;
+          CREATE OR REPLACE VIEW pop_authors AS SELECT pop_articles.views pop_articles.author, authors.name, authors.id FROM pop_articles
+          authors WHERE pop_articles.author = authors.id ORDER by views DESC;
 
 ## total_status: gets all the logs regardless its status code
             
-            CREATE OR REPLACE VIEW total_status AS SELECT  
-            date(time) AS date, COUNT(status) AS count
-            FROM log  GROUP BY date;
+           CREATE OR REPLACE VIEW total_status AS SELECT
+           date(time) AS date, COUNT(status) AS count
+           FROM log  GROUP BY date;
 
 
 ## err_status: gets logs with status(404)
