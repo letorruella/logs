@@ -23,9 +23,9 @@ A basic program that analyses a PostgreSQL database of a fictional news website 
 
 The authors table, this table hold three columns the author's name and a basic bio and their respective id.
 
-The articles table, eventhough this tables holds many columns , eg time, body, you can call check them out in psql to see them all, but three colum, (slug, title, id)   help me find the insights in the my program.
+The articles table, eventhough this tables holds many columns , eg time, body, you can call check them out in psql to see them all, but three colum, (slug, title, id)   help me find the insights in the program.
 
-The last table is the log, this is the most useful since it contains all the events that happened of the fictional websites. You can always consult the data for more detailed information, I used path, status and time.  	
+The last table is the log, this is the most useful since it contains all the events that happened of the fictional websites. You can always consult the data for more detailed information. I used path, status and time.  	
  
 
 
